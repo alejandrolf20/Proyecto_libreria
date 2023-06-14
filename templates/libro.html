@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ book['title'] }}</h2>
+    {% if book['status'] == 'MEAP' %}
+        <p>ESTE LIBRO NO SE HA PUBLICADO</p>
+    {% endif %}
+    <img src="{{ book['thumbnailUrl'] }}" alt="Portada del libro">
+    <p>Número de páginas: {{ book['pageCount'] }}</p>
+    <p>Descripción: {{ book['description'] }}</p>
+    <p>Autores: {{ ', '.join(book['authors']) }}</p>
+    <p>Categorías:</p>
+    <ul>
+        {% for category in book['categories'] %}
+            <li><a href="{{ url_for('categoria', categoria=category) }}">{{ category }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
