@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ autores }}</h2>
+    <ul>
+        {% for book in libros %}
+            <li><a href="{{ url_for('libro', isbn=book['isbn']) }}">{{ book['title'] }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
